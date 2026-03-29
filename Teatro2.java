@@ -5,13 +5,10 @@ class Teatro {
         Scanner teclado = new Scanner(System.in);
 
         boolean loopsala = true;
-
         String[][] principal = new String[12][12];
         String[][] beethoven = new String[12][12];
         String[][] genshin = new String[12][12];
-
         int[] dinheiro_acumulado = new int[5];
-
         int comprareserva = 0;
         int qntdd_ingresso = 0;
         int i = 0;
@@ -19,11 +16,9 @@ class Teatro {
         int b = 0;
         int z = 0;
         int zz = 0;
-
         String co_re = "";
         String x = "";
-
-        String[] percorrer_x = {"A", "B", "C", "D", "E", "F", "G", "H", "I", "J", "K", "L"};
+        String[] percorrer_x = {"a", "b", "c", "d", "e", "f", "g", "h", "i", "j", "k", "l"};
         int aaaa = 0;
         int y = 0;
         String[] titulopeca = {"Bela Adormecida", "As 7 maravilhas do mundo", "O espaço distorcido"};
@@ -37,12 +32,13 @@ class Teatro {
 
             int sala = teclado.nextInt();
 
-            switch (sala) {
-
-                case 1:
-                    System.out.println(titulopeca[sala]);
+            
+                    
+                    switch(sala){
+                        case 1:
+                            System.out.println(titulopeca[sala-1]);
                     System.out.print("   ");
-        //escrever as cadeiras
+                            //escrever as cadeiras
                     for ( aaaa = 0; aaaa < 12; aaaa++){
                         System.out.print(" "+percorrer_x[aaaa] + "  ");
                     }
@@ -59,6 +55,50 @@ class Teatro {
                         System.out.print("\n");
                     }
 //parou de escrever cadeira
+break;
+                    case 2:
+                        System.out.println(titulopeca[sala-1]);
+                    System.out.print("   ");
+                        //escrever as cadeiras
+                    for ( aaaa = 0; aaaa < 12; aaaa++){
+                        System.out.print(" "+percorrer_x[aaaa] + "  ");
+                    }
+                    System.out.println("");
+                    for (a = 0; a < 12; a++) {
+                        if(a>=10){
+                        System.out.print(a + 1 +" ");}else{System.out.print(a + 1 +"  ");}
+                        for (b = 0; b < 12; b++) {
+                            if (!"R".equals(beethoven[a][b]) && !"X".equals(beethoven[a][b])) {
+                                beethoven[a][b] = " ";
+                            }
+                            System.out.print("[" + beethoven[a][b] + "] ");
+                        }
+                        System.out.print("\n");
+                    }break;
+//parou de escrever cadeira
+case 3:
+    System.out.println(titulopeca[sala-1]);
+                    System.out.print("   ");
+    //escrever as cadeiras
+                    for ( aaaa = 0; aaaa < 12; aaaa++){
+                        System.out.print(" "+percorrer_x[aaaa] + "  ");
+                    }
+                    System.out.println("");
+                    for (a = 0; a < 12; a++) {
+                        if(a>=10){
+                        System.out.print(a + 1 +" ");}else{System.out.print(a + 1 +"  ");}
+                        for (b = 0; b < 12; b++) {
+                            if (!"R".equals(genshin[a][b]) && !"X".equals(genshin[a][b])) {
+                                genshin[a][b] = " ";
+                            }
+                            System.out.print("[" + genshin[a][b] + "] ");
+                        }
+                        System.out.print("\n");
+                    }
+//parou de escrever cadeira
+break;
+                    }
+        
                     while (i < 0 || i == 0) {
 
                         System.out.println("--------------------------\nInforme quantos ingressos deseja adquirir (0 = sair): ");
@@ -104,16 +144,36 @@ class Teatro {
                             }
 
                             co_re = (co_re.equals("comprar")) ? "X" : "R";
-
-                            if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
+switch(sala){
+    case 1:
+        if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
                                 principal[zz][y] = co_re;
                             } else {
 
                             }
+                            break;
+
+                            case 2:
+                                if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
+                                beethoven[zz][y] = co_re;
+                            } else {
+
+                            }
+                            break;
+
+                            case 3:
+                                if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
+                                genshin[zz][y] = co_re;
+                            } else {
+
+                            }break;
+
+}
+                           
 
                             dinheiro_acumulado[sala] = (comprareserva == 1)? dinheiro_acumulado[sala] + 20 : dinheiro_acumulado[sala] + 10;
                         }
-
+//aqui
                         System.out.print("   ");
                     for ( aaaa = 0; aaaa < 12; aaaa++){
                         System.out.print(" "+percorrer_x[aaaa] + "  ");
@@ -130,6 +190,7 @@ class Teatro {
                         }
                         System.out.print("\n");
                     }
+                    //aqui
                     }
 
                     comprareserva = 0;
@@ -138,4 +199,3 @@ class Teatro {
             }
         }
     }
-}
