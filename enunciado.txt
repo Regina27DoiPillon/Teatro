@@ -1,0 +1,156 @@
+Exercício — Sistema de Teatro Devisate + Menu de Exercícios
+
+Contexto
+O Teatro Devisate é um complexo cultural composto por múltiplas salas de espetáculo. Cada sala possui capacidade para 144 lugares, organizados em uma grade de 12 linhas × 12 colunas.
+Cada posição na sala é identificada pela combinação de linha (A a L) e coluna (1 a 12) — por exemplo: A1, B7, L12.
+
+Enunciado
+Você foi contratado para desenvolver o sistema de gerenciamento de reservas do Teatro Devisate.
+O sistema deve ser implementado em Java e controlar as reservas de cadeiras de cada sala de espetáculo, permitindo reservas, compras, cancelamentos e ainda disponibilizando um menu de estudos com os 20 exercícios teóricos já definidos anteriormente, em formato paginado.
+
+Especificações do Sistema de Teatro
+1. Cadastro da Sala
+O sistema deve suportar múltiplas salas de espetáculo. Cada sala possui:
+Nome da sala (ex: Sala Beethoven, Sala Principal)
+Nome do espetáculo em cartaz
+Grade de 12 × 12 cadeiras (144 lugares no total)
+Preço do ingresso inteiro
+Preço do meio ingresso (50% do ingresso inteiro)
+
+2. Estados de uma Cadeira
+Cada cadeira da grade pode estar em um dos seguintes estados:
+Estado
+Símbolo
+Descrição
+Livre
+[ ]
+Disponível para reserva ou compra
+Reservada
+[R]
+Reservada — lugar bloqueado, pago 50%
+Ocupada
+[X]
+Comprada — lugar confirmado, pago 100%
+
+Exportar
+Copiar
+
+3. Operações Disponíveis
+3.1 — Reservar uma Cadeira
+O usuário informa:
+Sala
+Linha (A–L)
+Coluna (1–12)
+A cadeira passa do estado Livre para Reservada.
+O valor cobrado é 50% do ingresso inteiro.
+Não é possível reservar uma cadeira já Reservada ou Ocupada.
+
+3.2 — Comprar um Lugar
+O usuário informa:
+Sala
+Linha (A–L)
+Coluna (1–12)
+A cadeira passa para o estado Ocupada.
+O valor cobrado é:
+100% do ingresso inteiro se a cadeira estava Livre;
+A diferença de 50% se a cadeira já estava Reservada.
+Não é possível comprar uma cadeira já Ocupada.
+
+3.3 — Cancelar uma Reserva
+O usuário informa:
+Sala
+Linha (A–L)
+Coluna (1–12)
+Só é possível cancelar cadeiras no estado Reservada.
+A cadeira volta ao estado Livre.
+O valor do reembolso é o valor do meio ingresso pago na reserva.
+Cadeiras Ocupadas não podem ser canceladas por esta operação.
+
+4. Exibição do Mapa da Sala
+O sistema deve exibir o mapa completo da sala com os estados de cada cadeira.
+Linhas identificadas pelas letras A a L.
+Colunas numeradas de 1 a 12.
+Exemplo de exibição:
+text
+Copiar
+===========================================
+  SALA: Sala Beethoven
+  ESPETÁCULO: O Fantasma da Ópera
+===========================================
+
+      1    2    3    4    5    6    7    8    9   10   11   12
+  A  [ ]  [ ]  [ ]  [R]  [ ]  [ ]  [X]  [ ]  [ ]  [ ]  [ ]  [ ]
+  B  [ ]  [X]  [ ]  [ ]  [ ]  [R]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+  C  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+  ...
+  L  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]  [ ]
+
+  [ ] Livre   [R] Reservada   [X] Ocupada
+  Livres: 140 | Reservadas: 2 | Ocupadas: 2
+===========================================
+
+5. Relatório Financeiro da Sala
+O sistema deve exibir, para a sala selecionada:
+Total de cadeiras livres
+Total de cadeiras reservadas
+Total de cadeiras ocupadas
+Total arrecadado (somente ingressos inteiros efetivamente pagos)
+Total em reservas (somente meios ingressos pagos em cadeiras reservadas)
+Receita potencial se todas as reservas forem confirmadas
+Receita potencial máxima se todas as cadeiras livres forem vendidas
+
+Requisitos Técnicos (Teatro)
+Utilize uma matriz bidimensional (char[][], int[][] ou similar) para representar o estado das cadeiras de cada sala.
+Utilize estruturas condicionais (if/else ou switch) para controlar as operações.
+Utilize estruturas de repetição (for aninhado) para:
+Exibir o mapa da sala.
+Calcular totais de lugares e valores.
+Utilize o operador ternário em pelo menos uma parte do código (por exemplo, ao definir o símbolo da cadeira ou calcular automaticamente o valor a pagar).
+O menu principal deve ser implementado com do/while para manter o sistema em execução até o usuário escolher sair.
+Tratar entradas inválidas:
+Sala inexistente.
+Linha ou coluna fora do intervalo.
+Operações incompatíveis com o estado atual da cadeira.
+
+Menu de Exercícios — Navegação Paginada
+Além do sistema do teatro, você deve implementar um menu de exercícios que referencia os 20 exercícios teóricos que já foram propostos anteriormente (par/ímpar, maior de dois números, IMC, etc.).
+Especificação do Menu de Exercícios
+Ao selecionar a opção 7 — Lista de Exercícios no menu principal, o sistema abre um submenu paginado.
+Existem 20 exercícios, numerados de 1 a 20.
+Devem ser exibidos 7 exercícios por página, gerando 3 páginas:
+Página 1: exercícios 1–7
+Página 2: exercícios 8–14
+Página 3: exercícios 15–20
+O usuário pode navegar entre as páginas com:
+P — Próxima página
+A — Página anterior
+A opção A só aparece se não estiver na primeira página.
+A opção P só aparece se não estiver na última página.
+O usuário pode digitar o número do exercício para ver o enunciado completo daquele exercício.
+Após visualizar um exercício, o sistema retorna ao menu de exercícios na mesma página.
+A opção V — Voltar retorna ao menu principal do teatro.
+
+Requisitos Técnicos do Menu de Exercícios
+Use um vetor de títulos para os exercícios:
+ String[] titulos = new String[20];
+
+Use um vetor de enunciados completos para os exercícios:
+ String[] enunciados = new String[20];
+
+A lógica de paginação deve usar as variáveis:
+int paginaAtual — índice da página (começa em 0).
+int itensPorPagina = 7.
+int totalExercicios = 20.
+int totalPaginas = (int) Math.ceil((double) totalExercicios / itensPorPagina);
+int inicio = paginaAtual * itensPorPagina;
+int fim = Math.min(inicio + itensPorPagina, totalExercicios);
+A cada página:
+Exibir apenas os exercícios de índice [inicio … fim-1].
+Exibir A (anterior) somente se paginaAtual > 0.
+Exibir P (próximo) somente se paginaAtual < totalPaginas - 1.
+Sempre exibir V para voltar ao menu principal.
+Use do/while para manter o submenu de exercícios ativo até o usuário escolher Voltar.
+Use o operador ternário para controlar a exibição condicional das opções A e P.
+Use switch ou if/else para tratar as entradas do usuário (números, A, P, V).
+
+
