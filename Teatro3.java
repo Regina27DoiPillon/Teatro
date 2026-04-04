@@ -11,7 +11,6 @@ class Teatro {
         String[][] genshin = new String[12][12];
         int[] dinheiro_acumulado = new int[5];
         int comprareserva = 0;
-        int qntdd_ingresso = 0;
         int i = 0;
         int a = 0;
         int b = 0;
@@ -35,6 +34,7 @@ class Teatro {
                 System.out.println(
                     "\nInforme o que deseja fazer:\n[0] = Sair; \n[1] = Ver Shows e Espetáculos; \n[2] = Mostrar valor arrecadado do Teatro; \n[3] = 20 exercícios paginados de Java."
                 );
+
                 mainmenu = teclado.nextInt();
 
                 if (mainmenu < 0 || mainmenu > 3) {
@@ -52,8 +52,9 @@ class Teatro {
                     case 1:
                         while (true) {
                             System.out.println(
-                                "\nBem vindo ao Teatro Devisate. Informe qual sala deseja: \n[0] = Sair;\n[1] = Principal; \n[2] = Beethoven; \n[3] = Genshin Impact."
+                                "\nBem vindo ao Teatro Devisate. Informe qual sala deseja: \n[0] = Voltar ao menu;\n[1] = Principal; \n[2] = Beethoven; \n[3] = Genshin Impact."
                             );
+
                             sala = teclado.nextInt();
 
                             if (sala > 4 || sala < 0) {
@@ -67,129 +68,139 @@ class Teatro {
                             break;
                         } else {
 
-                            PrintarCadeiras.quadro12x12(
-                                titulopeca,
-                                nomesala,
-                                sala,
-                                aaaa,
-                                percorrer_x,
-                                a,
-                                b,
-                                principal,
-                                beethoven,
-                                genshin,
-                                reservadas,
-                                compradas
-                            );
-
                             while (i < 0 || i == 0) {
+                                System.out.println("--------------------------\nO que deseja fazer?\n[0] = Voltar;\n[1] = Comprar ingresso;\n[2] = Reservar ingresso;\n[3] = Cancelar reserva.");
 
-                                System.out.println("--------------------------\nInforme quantos ingressos deseja adquirir (0 = sair): ");
-                                qntdd_ingresso = teclado.nextInt();
+                                comprareserva = teclado.nextInt();
 
-                                if (qntdd_ingresso == 0) {
+                                if (comprareserva == 0) {
                                     i = 1;
                                 } else {
+                                    if (comprareserva > 3 || comprareserva < 0) {
+                                        System.out.println("Comando digitado incorretamente.");
+                                    } else {
+                                        i = 1;
 
-                                    for (i = qntdd_ingresso; i > 0; i--) {
+                                        if (comprareserva == 1 || comprareserva == 2) {
+                                            co_re =
+                                                (comprareserva == 1)
+                                                    ? "comprar"
+                                                    : (comprareserva == 2)
+                                                        ? "reservar"
+                                                        : "cancelar";
 
-                                        while (loopsala == true) {
-                                            System.out.println("\nInforme o que deseja fazer: \n[1] = Comprar ingresso (20 reais); \n[2] = Reservar ingresso (10 reais);");
-                                            comprareserva = teclado.nextInt();
-                                            teclado.nextLine();
+                                            System.out.println("\nInforme qual assento na coluna (1 ~ 12) deseja " + co_re + ":");
 
-                                            if (comprareserva == 1 || comprareserva == 2) {
-                                                co_re = (comprareserva == 1) ? "comprar" : "reservar";
-                                                break;
+                                            y = teclado.nextInt();
+
+                                            y = y - 1;
+
+                                            System.out.println("Informe qual assento na fileira (A ~ L) deseja " + co_re + ":");
+
+                                            x = teclado.nextLine();
+
+                                            x = x.toUpperCase();
+
+                                            System.out.println("\n");
+
+                                            for (z = 0; z < 12; z++) {
+                                                if (x.equals(percorrer_x[z])) {
+                                                    zz = z;
+                                                    System.out.println(zz);
+                                                    break;
+                                                }
                                             }
-                                            System.out.println("\nDigite um valor válido (1 ou 2).");
-                                        }
 
-                                        System.out.println("\nInforme qual assento na coluna (1 ~ 12) deseja " + co_re + ":");
-                                        y = teclado.nextInt();
-                                        y = y - 1;
+                                            co_re =
+                                                (co_re.equals("comprar"))
+                                                    ? "X"
+                                                    : (co_re.equals("reservar"))
+                                                        ? "R"
+                                                        : " ";
 
-                                        System.out.println("Informe qual assento na fileira (A ~ L) deseja " + co_re + ":");
-                                        x = teclado.nextLine();
-                                        x = x.toUpperCase();
+                                            switch (sala) {
+                                                case 1:
+                                                    if (co_re == "X" || co_re == "R") {
+                                                        if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
+                                                            if (principal[zz][y].equals("X") || principal[zz][y].equals("R")) {
+                                                                System.out.println("Acento ocupado. Redigite as informações de forma correta.");
+                                                            } else {
+                                                                principal[zz][y] = co_re;
+                                                            }
+                                                        } else {
+                                                            System.out.println("Acento indisponível. Redigite as informações de forma correta.");
+                                                        }
+                                                    } else {
+                                                        if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
+                                                            if (!principal[zz][y].equals("R")) {
+                                                                System.out.println("Não é possível cancelar este acento. Redigite as informações de forma correta.");
+                                                            } else {
+                                                                principal[zz][y] = co_re;
+                                                            }
+                                                        } else {
+                                                            System.out.println("Acento indisponível. Redigite as informações de forma correta.");
+                                                        }
+                                                    }
+                                                    break;
 
-                                        System.out.println("\n");
+                                                case 2:
+                                                    if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
+                                                        if (beethoven[zz][y].equals("X") || beethoven[zz][y].equals("R")) {
+                                                            System.out.println("Acento ocupado. Redigite as informações de forma correta.");
+                                                        } else {
+                                                            beethoven[zz][y] = co_re;
+                                                        }
+                                                    } else {
+                                                        System.out.println("Acento indisponível. Redigite as informações de forma correta.");
+                                                    }
+                                                    break;
 
-                                        for (z = 0; z < 12; z++) {
-                                            if (x.equals(percorrer_x[z])) {
-                                                zz = z;
-                                                System.out.println(zz);
-                                                break;
+                                                case 3:
+                                                    if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
+                                                        if (genshin[zz][y].equals("X") || genshin[zz][y].equals("R")) {
+                                                            System.out.println("Acento ocupado. Redigite as informações de forma correta.");
+                                                        } else {
+                                                            genshin[zz][y] = co_re;
+                                                        }
+                                                    } else {
+                                                        System.out.println("Acento indisponível. Redigite as informações de forma correta.");
+                                                    }
+                                                    break;
                                             }
+
+                                            dinheiro_acumulado[sala] =
+                                                (comprareserva == 1)
+                                                    ? dinheiro_acumulado[sala] + 20
+                                                    : dinheiro_acumulado[sala] + 10;
+
+                                            PrintarCadeiras.quadro12x12(
+                                                titulopeca,
+                                                nomesala,
+                                                sala,
+                                                aaaa,
+                                                percorrer_x,
+                                                a,
+                                                b,
+                                                principal,
+                                                beethoven,
+                                                genshin,
+                                                reservadas,
+                                                compradas
+                                            );
                                         }
-
-                                        co_re = (co_re.equals("comprar")) ? "X" : "R";
-
-                                        switch (sala) {
-                                            case 1:
-                                                if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
-                                                    if (principal[zz][y].equals("X") || principal[zz][y].equals("R")) {
-                                                        System.out.println("Acento ocupado. Redigite as informações de forma correta.");
-                                                    } else {
-                                                        principal[zz][y] = co_re;
-                                                    }
-                                                } else {
-                                                    System.out.println("Acento indisponível. Redigite as informações de forma correta.");
-                                                }
-                                                break;
-
-                                            case 2:
-                                                if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
-                                                    if (beethoven[zz][y].equals("X") || beethoven[zz][y].equals("R")) {
-                                                        System.out.println("Acento ocupado. Redigite as informações de forma correta.");
-                                                    } else {
-                                                        beethoven[zz][y] = co_re;
-                                                    }
-                                                } else {
-                                                    System.out.println("Acento indisponível. Redigite as informações de forma correta.");
-                                                }
-                                                break;
-
-                                            case 3:
-                                                if (y >= 0 && y < 12 && zz >= 0 && zz < 12) {
-                                                    if (genshin[zz][y].equals("X") || genshin[zz][y].equals("R")) {
-                                                        System.out.println("Acento ocupado. Redigite as informações de forma correta.");
-                                                    } else {
-                                                        genshin[zz][y] = co_re;
-                                                    }
-                                                } else {
-                                                    System.out.println("Acento indisponível. Redigite as informações de forma correta.");
-                                                }
-                                                break;
-                                        }
-
-                                        dinheiro_acumulado[sala] =
-                                            (comprareserva == 1)
-                                                ? dinheiro_acumulado[sala] + 20
-                                                : dinheiro_acumulado[sala] + 10;
                                     }
                                 }
-
-                                PrintarCadeiras.quadro12x12(
-                                    titulopeca,
-                                    nomesala,
-                                    sala,
-                                    aaaa,
-                                    percorrer_x,
-                                    a,
-                                    b,
-                                    principal,
-                                    beethoven,
-                                    genshin,
-                                    reservadas,
-                                    compradas
-                                );
                             }
 
                             comprareserva = 0;
+
                             break;
                         }
+
                     case 2:
+                        break;
+
+                    default:
                         break;
                 }
             }
