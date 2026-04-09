@@ -58,8 +58,8 @@ class PrintarCadeiras{
                         
                         System.out.print("\n");
                     }
-                    System.out.println("[ ] Livre   [R] Reservada   [X] Ocupada");
-                    System.out.println("["+ (144 - reservadas[sala-1] - compradas[sala - 1]) +"] Livre   ["+ reservadas[sala - 1] +"] Reservada   ["+ compradas[sala - 1] +"] Ocupada");
+                    System.out.println("[ ] Livre     [R] Reservada   [X] Ocupada");
+                    System.out.println("["+ ((144 - reservadas[sala - 1]) - compradas[sala - 1]) +"] Livre   ["+ reservadas[sala - 1] +"] Reservada      ["+ compradas[sala - 1] +"] Ocupada");
                     /*System.out.println("Valor estimado das cadeiras ocupadas: "+ compradas[sala-1] * 20 +"\nValor estimado das cadeiras reservadas: "+ reservadas[sala - 1] * 10 + "\nValor total da sala: " + ((compradas[sala-1] * 20) + (reservadas[sala - 1] * 10)) + "\nValor total estimado da sala: " + ((compradas[sala-1] * 20) + (reservadas[sala - 1] * 20)));*/
     }
 }

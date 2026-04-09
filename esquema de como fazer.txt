@@ -1,0 +1,39 @@
+teatro
+
+o que deseja fazer:
+ver shows e espetáculos (1)
+mostrar valor arrecadado
+
+
+	1:
+	*múltiplas salas de espetáculos
+	cada sala = 12x12*
+
+	exibição:
+	Sala + nome sala
+	Espetáculo no cartaz + espeteculo
+	preco_ingresso / preco_igresso/
+
+	12x12
+	legenda das cadeiras
+		->legenda
+		->quantidade de cadeiras disponíveis/indisponíveis de acordo com legenda
+
+
+
+	o que deseja fazer?
+	reservar
+	comprar
+	cancelar reserva
+
+	2:
+	mostrar valor arrecadado de cada sala individualmente
+		->compradas
+		->reservadas
+		->se as reservadas forem compradas
+
+	mostrar valor arrecadado de tudo
+		->valor de todas as salas juntas
+
+
+mostrar os 20 exercícios em páginas.

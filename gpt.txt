@@ -1,0 +1,126 @@
+Para chamar o código do arquivo B dentro do arquivo A em Java, você precisa basicamente de três coisas:
+
+Os dois arquivos estarem no mesmo pacote (ou importar corretamente)
+Criar um objeto da classe B (ou usar métodos static)
+Chamar o método desejado dentro da condição
+Exemplo simples
+📁 Arquivo B (lógica)
+public class B {
+
+    public void executarLogica() {
+        System.out.println("Executando lógica do arquivo B!");
+    }
+}
+📁 Arquivo A (menu)
+import java.util.Scanner;
+
+public class A {
+
+    public static void main(String[] args) {
+        Scanner scanner = new Scanner(System.in);
+
+        System.out.println("1 - Executar lógica");
+        int opcao = scanner.nextInt();
+
+        if (opcao == 1) {
+            B b = new B(); // cria objeto da classe B
+            b.executarLogica(); // chama o método
+        }
+    }
+}
+💡 Alternativa com método static
+
+Se você não quiser criar objeto:
+
+Arquivo B:
+public class B {
+
+    public static void executarLogica() {
+        System.out.println("Executando lógica do arquivo B!");
+    }
+}
+Arquivo A:
+if (opcao == 1) {
+    B.executarLogica(); // chama direto, sem instanciar
+}
+⚠️ Pontos importantes
+O nome do arquivo deve ser igual ao da classe (B.java → class B)
+Se estiverem em pacotes diferentes, use import:
+import pacote.B;
+O método precisa ser public para ser acessado
+
+
+
+
+
+
+
+é obrigatório que essa seja a configuração? Ou pode ter o void main(String[]args) dentro?
+
+Boa pergunta — não, não é obrigatório usar public static void executarLogica() 👍
+Você pode ter um main dentro do arquivo B, mas isso muda um pouco a forma de chamar.
+
+✅ 🔹 Opção 1 (mais usada): método comum
+
+Você cria um método (com ou sem static) e chama ele no A.
+
+✔ Melhor para reaproveitamento de código.
+
+public class B {
+    public void executarLogica() {
+        System.out.println("Rodando lógica...");
+    }
+}
+
+Chamada no A:
+
+B b = new B();
+b.executarLogica();
+⚠️ 🔹 Opção 2: usar main dentro do B
+
+Você pode sim ter um main dentro do B:
+
+public class B {
+    public static void main(String[] args) {
+        System.out.println("Executando pelo main do B");
+    }
+}
+
+E chamar assim no A:
+
+if (opcao == 1) {
+    B.main(new String[]{}); // chama o main do B
+}
+🤔 Mas isso é recomendado?
+
+👉 Não é o ideal na maioria dos casos.
+
+O main é pensado como ponto de entrada do programa, não como método reutilizável.
+Usar ele como “função” funciona, mas deixa o código:
+
+menos organizado
+mais difícil de manter
+menos reutilizável
+💡 Melhor prática
+
+Use o main só para iniciar o programa, e coloque a lógica em métodos:
+
+public class B {
+
+    public static void main(String[] args) {
+        executarLogica();
+    }
+
+    public static void executarLogica() {
+        System.out.println("Lógica aqui");
+    }
+}
+
+Assim você pode:
+
+rodar o B sozinho ✔
+chamar do A ✔
+✔️ Resumindo
+❌ Não é obrigatório usar executarLogica()
+✔ Pode usar main sim
+👍 Mas o mais correto é separar lógica em métodos
