@@ -209,7 +209,9 @@ class Teatro {
                         }
 
                         break;
-
+                    case 3:
+                        break;
+                        System.out.println("");
                     default:
                         break;
                 }

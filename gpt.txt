@@ -34,7 +34,7 @@ Se você não quiser criar objeto:
 
 Arquivo B:
 public class B {
-
+    
     public static void executarLogica() {
         System.out.println("Executando lógica do arquivo B!");
     }
