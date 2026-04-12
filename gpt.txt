@@ -124,3 +124,17 @@ chamar do A ✔
 ❌ Não é obrigatório usar executarLogica()
 ✔ Pode usar main sim
 👍 Mas o mais correto é separar lógica em métodos
+
+A forma mais comum e recomendada de converter uma String para um inteiro (int) em Java é utilizando o método Integer.parseInt().Aqui estão as maneiras mais utilizadas:1. Usando Integer.parseInt()Este método analisa a string e retorna um tipo primitivo int.javaString numeroStr = "123";
+int numero = Integer.parseInt(numeroStr);
+2. Usando Integer.valueOf()Este método faz a mesma conversão, mas retorna um objeto Integer (classe wrapper) em vez de um int primitivo, aproveitando o autoboxing do Java.javaString numeroStr = "123";
+int numero = Integer.valueOf(numeroStr);
+
+
+String texto = "123a";
+try {
+    int numero = Integer.parseInt(texto);
+    System.out.println(numero);
+} catch (NumberFormatException e) {
+    System.out.println("A string não é um número válido.");
+}

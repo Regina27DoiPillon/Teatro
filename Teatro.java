@@ -210,9 +210,11 @@ class Teatro {
 
                         break;
                     case 3:
+                        Menu.menuzin();
                         break;
-                        System.out.println("");
+                        
                     default:
+                        System.out.println("Comando digitado incorretamente.");
                         break;
                 }
             }
