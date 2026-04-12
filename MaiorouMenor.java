@@ -9,6 +9,6 @@ class MaiorouMenor{
         int num2 = teclado.nextInt();
         String maioroumenor = (num1==num2)? "igual": (num1>num2)? "maior" : "menor";
         System.out.println("O número "+num1+" é "+maioroumenor+" que "+num2);
-        teclado.close();
+       
     }
 }

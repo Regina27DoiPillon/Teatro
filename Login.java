@@ -10,6 +10,6 @@ class Login{
         String senha = teclado.nextLine();
         String acesso = (s.equals(senha) && u.equals(usuario))? "Acesso liberado." : "Acesso negado.";
         System.out.println(acesso);
-        teclado.close();
+        
     }
 }

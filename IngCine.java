@@ -6,6 +6,6 @@ class IngCine{
         int idade = teclado.nextInt();
         String ingresso = (idade<12 || idade>60)? "meia entrada - 10 reais" : "entrada - 20 reais";
         System.out.println("Seu ingresso é uma "+ ingresso);
-        teclado.close();
+       
     }
 }

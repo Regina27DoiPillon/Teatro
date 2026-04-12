@@ -6,6 +6,6 @@ class PositivoNegativo{
         int num = teclado.nextInt();
         String devolucao = (num==0)? "zero" : (num>0)? "positivo" : "negativo";
         System.out.println("O número "+ num+" é "+ devolucao);
-        teclado.close();
+        
     }
 }

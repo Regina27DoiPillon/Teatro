@@ -27,7 +27,7 @@ class MaiordeTres{
         }
         String empatou = (empate>=2)? "Há empate entre os números." : "Não há empate.";
         System.out.println("O maior número é: "+maior+". "+empatou);
-        teclado.close();
+       
 
     }
 }

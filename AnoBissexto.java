@@ -15,6 +15,5 @@ class AnoBissexto{
             }
         }
         System.out.println("O ano "+ano+" "+bissexto+" bissexto.");
-        teclado.close();
     }
 }

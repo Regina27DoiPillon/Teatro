@@ -15,6 +15,6 @@ class EmultiploouNao{
         }
         String mu = (multiplo == 2)? "de 5 e 3" : (multiplo ==1 && m==3)? "de 3" : (multiplo==1 &&m==0)? "de 5" : "de nenhum";
         System.out.println("O número "+ num+ " é multiplo "+mu);
-        teclado.close();
+        
     }
 }

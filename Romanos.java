@@ -37,7 +37,7 @@ class Romanos{
                 break;
             default:
                 System.out.println("Número digitado incorretamente.");
-        teclado.close();
+       
         }
     }
 }

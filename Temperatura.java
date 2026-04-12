@@ -6,6 +6,6 @@ class Temperatura{
         double temp = teclado.nextDouble();
         String condicao = (temp<15)? "frio" : (temp>=15 && temp<=25)? "agradável" : "quente";
         System.out.println(temp + " é "+condicao);
-        teclado.close();
+        
     }
 }

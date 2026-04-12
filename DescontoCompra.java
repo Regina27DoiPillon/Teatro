@@ -18,6 +18,6 @@ class DescontoCompra{
         }
         totalfinal=compra-desconto;
         System.out.println("O valor de "+compra+" teve "+ desconto+"R$ de desconto ("+d+"). Preço a pagar: "+totalfinal);
-        teclado.close();
+        
     }
 }

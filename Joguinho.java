@@ -10,6 +10,6 @@ class Joguinho{
         if (j1==3 && j2==1){vitoria= "Vitória J2";}
         if (j1==1 && j2==3){vitoria= "Vitória J1";}
         System.out.println(vitoria);
-        teclado.close();
+       
     }
 }

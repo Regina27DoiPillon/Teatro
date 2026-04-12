@@ -6,6 +6,6 @@ class ParouImpar{
         int num = teclado.nextInt();
         String parouimpar = (num%2==0)? "Par" : "Ímpar";
         System.out.println("O número "+num+" é "+ parouimpar);
-        teclado.close();
+      
     }
 }

@@ -10,6 +10,6 @@ class Multa{
         double metadeporcento = limite+limite*0.5;
         String deferimento = (limite>=velo)? "Sem multa." : (velo>limite && vinteporcento>=velo)? "Multa leve." : (velo>vinteporcento && metadeporcento>=velo)? "Multa grave." : "Suspensão.";
         System.out.println(deferimento);
-        teclado.close();
+     
     }
 }

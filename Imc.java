@@ -10,6 +10,6 @@ class Imc{
 
         String condicao = (imc<18.5)? "abaixo do peso" : (imc>=18.5 && imc<25)? "peso normal" : (imc>=25 && imc<30)? "sobrepeso" : "obesidade";
         System.out.println("O imc = "+imc+" e está classificado como: "+condicao);
-        teclado.close();
+        
     }
 }
