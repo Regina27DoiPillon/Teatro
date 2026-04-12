@@ -1,6 +1,6 @@
 import java.util.Scanner;
 class Triangulo{
-    public static void traingulo(){
+    public static void triangulo(){
         Scanner teclado = new Scanner(System.in);
         System.out.println("Informe o 1º lado do triângulo: ");
         int lado1 = teclado.nextInt();
